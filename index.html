@@ -5,15 +5,16 @@
 	<title>Frequency Generator</title>
 </head>
 <body>
-	<h1>Frequency Generator</h1>
-	<p>Choose a frequency:</p>
+
     <div class="directions">
-	<button onclick="play(1750)" style="width:100px; height:100px; margin-left: 100px;">Left</button>
-	<button onclick="play(1830)" style="width:100px; height:100px;">Straight</button>
-	<button onclick="play(1900)" style="width:100px; height:100px;">Right</button>
-	<button onclick="play(1600)" style="margin-left: 100px; width:100px; height:100px;">Stop</button>
+	<button onclick="play(1750)" style="width:200px; height:200px; margin-left: 200px;">Left</button>
+	<button onclick="play(1830)" style="width:200px; height:200px;margin-left: 50px;">Straight</button>
+	<button onclick="play(1900)" style="width:200px; height:200px; margin-left: 50px;">Right</button>
 </div>
-	<button onclick="stop()" style="margin-top: 100px; width:100px; height:100px;">Off</button>
+
+	<button onclick="play(1600)" style=" margin-top:200px; margin-left: 200px; width:200px; height:200px; background-color: green;">Start</button>
+	<button onclick="play(1600)" style=" margin-top:200px; margin-left: 50px; width:200px; height:200px; background-color: red;">Stop</button>
+	<button onclick="stop()" style=" width:200px; height:200px; margin-left:50px; background-color: black; color: white;">Off</button>
 
 	<script>
 		var context = new AudioContext();
@@ -115,6 +116,5 @@
 </body>
 </html>
 -->
-
 
 
