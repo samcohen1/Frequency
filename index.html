@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Frequency Generator</title>
+</head>
+<body>
+	<h1>Frequency Generator</h1>
+	<p>Choose a frequency:</p>
+    <div class="directions">
+	<button onclick="play(1750)">Left</button>
+	<button onclick="play(1830)">Straight</button>
+	<button onclick="play(1900)">Right</button>
+	<button onclick="play(1600)" style="margin-left: 100px;">Stop</button>
+</div>
+	<button onclick="stop()" style="margin-top: 100px;">Off</button>
+
+	<script>
+		var context = new AudioContext();
+		var oscillator = null;
+		var frequency = null;
+
+		function play(freq) {
+			if (oscillator !== null) {
+				oscillator.stop(context.currentTime);
+			}
+			frequency = freq;
+			oscillator = context.createOscillator();
+			oscillator.frequency.setValueAtTime(frequency, context.currentTime);
+			oscillator.connect(context.destination);
+			oscillator.start();
+		}
+
+		function stop() {
+			if (oscillator !== null) {
+				oscillator.stop(context.currentTime);
+				oscillator.disconnect();
+				oscillator = null;
+				frequency = null;
+			}
+		}
+	</script>
+</body>
+</html>
