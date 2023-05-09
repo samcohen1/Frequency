@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Frequency Generator</title>
+</head>
+<body>
+	<h1>Frequency Generator</h1>
+	<p>Choose a frequency:</p>
+    <div class="directions">
+	<button onmouseover="play(1750)" onmouseout="play(1600)" style="width:100px; height:100px; margin-left: 100px;">Left</button>
+	<button onmouseover="play(1830)" onmouseout="play(1600)" style="width:100px; height:100px;">Straight</button>
+	<button onmouseover="play(1900)" onmouseout="play(1600)" style="width:100px; height:100px;">Right</button>
+	<button onmouseover="play(1600)" onmouseout="play(1600)" style="margin-left: 100px; width:100px; height:100px;">Stop</button>
+    </div>
+	<button onclick="play(1600)" style="margin-top: 100px; width:100px; height:100px;">Start</button>
+	<button onclick="stop()" style="margin-top: 100px; margin-left: 10px; width:100px; height:100px;">Off</button>
+
+	<script>
+		var context = new AudioContext();
+		var oscillator = null;
+		var frequency = null;
+
+		function play(freq) {
+			if (oscillator !== null) {
+				oscillator.stop(context.currentTime);
+			}
+
+			frequency = freq;
+
+			oscillator = context.createOscillator();
+			oscillator.frequency.setValueAtTime(frequency, context.currentTime);
+			oscillator.connect(context.destination);
+			oscillator.start();
+		}
+
+		function stop() {
+			if (oscillator !== null) {
+				oscillator.stop(context.currentTime);
+				oscillator.disconnect();
+				oscillator = null;
+				frequency = null;
+			}
+		}
+
+        function stopping() {
+			if (oscillator !== null) {
+				oscillator.stop(context.currentTime);
+			}
+
+			frequency = freq;
+
+			oscillator = context.createOscillator();
+			oscillator.frequency.setValueAtTime(1600, context.currentTime);
+			oscillator.connect(context.destination);
+			oscillator.start();
+		}
+	</script>
+</body>
+</html>
